@@ -1,0 +1,15 @@
+---
+resources:
+  - name: mabel-git
+    type: git
+    source:
+      uri: https://github.com/mooncoolio/pipeline_building.git
+      branch: main
+
+jobs:
+  - name: mabel-job
+    plan:
+    - get: mabel-git
+      trigger: true
+    - task: mabel-task
+      file: mabel-git/helloworld.yml
